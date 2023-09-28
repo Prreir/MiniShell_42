@@ -30,6 +30,19 @@
 # include <string.h>
 # include <termios.h>
 
+typedef struct s_env
+{
+	char			*v_name;
+	char			*v_value;
+	struct s_env 	*next;
+}	t_env;
+
+typedef struct s_data
+{
+	t_env *env;
+}	t_data;
+
 //main.c
+void init(t_data *data);
 
 #endif

@@ -12,9 +12,19 @@
 
 #include "shell.h"
 
-int main(int argc, char **argv)
+void init(t_data *data)
 {
+    data->env = NULL;
+}
+
+int main(int argc, char **argv, char **env)
+{
+    t_data data;
+
     (void)argc;
     (void)argv;
+
+    init(&data);
+    env_birth(&data, env);
     return (0);
 }
