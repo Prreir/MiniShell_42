@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lugoncal < lugoncal@student.42porto.com    +#+  +:+       +#+         #
+#    By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/19 11:07:58 by lugoncal          #+#    #+#              #
-#    Updated: 2023/09/19 11:33:56 by lugoncal         ###   ########.fr        #
+#    Updated: 2023/09/28 11:04:56 by lugoncal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 LIBFT = ./Libft/libft.a
 
-SRC = main.c
+SRC = main.c utils.c ctrl.c env_birth.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -26,7 +26,7 @@ $(LIBFT):
 			$(MAKE) -C ./Libft
 
 $(NAME):	$(OBJ) $(LIBFT)
-			$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o minishell
+			$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -lreadline -o minishell
 
 clean:
 		$(MAKE) clean -C ./Libft

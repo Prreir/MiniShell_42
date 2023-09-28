@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/19 11:07:52 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/09/28 11:13:56 by lugoncal         ###   ########.fr       */
+/*   Created: 2023/09/27 10:38:56 by lugoncal          #+#    #+#             */
+/*   Updated: 2023/09/28 09:52:59 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-void	data_init(t_data *data)
+int	valid(t_data *data)
 {
-	data->input = NULL;
-	data->env = NULL;
+	if (!ft_strlen(data->input))
+	{
+		free(data->input);
+		return (1);
+	}
+	add_history(data->input);
+	return (0);
 }
 
-int	main(int argc, char **argv, char **envp)
+void	boom(t_data *data)
 {
-	t_data	data;
+	free(data->input);
+}
 
-	if (argc > 1 && argv)
-		error_msg(NULL, INV_ARGS, -1);
-	data_init(&data);
-	env_birth(&data, envp);
-	while (1)
-	{
-		ctrl_signals();
-		data.input = readline(PROMPT);
-		if (ctrl_d(data.input))
-			break;
-		if (valid(&data))
-			continue;
-	}
-	return (0);
+void	error_msg(t_data *data, char *msg, int status)
+{
+	if (data)
+		boom(data);
+	printf("%s\n", msg);
+	exit(status);
 }

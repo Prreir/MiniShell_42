@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 10:39:31 by lugoncal          #+#    #+#              #
-#    Updated: 2023/02/10 10:56:31 by marvin           ###   ########.fr        #
+#    Updated: 2023/09/27 10:52:50 by lugoncal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,3 +45,5 @@ fclean:	clean
 	rm -rf *.a
 
 re:	fclean all
+
+.SILENT:

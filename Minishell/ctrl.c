@@ -1,39 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ctrl.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/19 11:07:52 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/09/28 11:13:56 by lugoncal         ###   ########.fr       */
+/*   Created: 2023/09/27 15:25:38 by lugoncal          #+#    #+#             */
+/*   Updated: 2023/09/28 09:05:18 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-void	data_init(t_data *data)
+int	ctrl_d (char *input)
 {
-	data->input = NULL;
-	data->env = NULL;
-}
-
-int	main(int argc, char **argv, char **envp)
-{
-	t_data	data;
-
-	if (argc > 1 && argv)
-		error_msg(NULL, INV_ARGS, -1);
-	data_init(&data);
-	env_birth(&data, envp);
-	while (1)
+	if (!input)
 	{
-		ctrl_signals();
-		data.input = readline(PROMPT);
-		if (ctrl_d(data.input))
-			break;
-		if (valid(&data))
-			continue;
+		printf ("exit\n");
+		return (1);
 	}
 	return (0);
+}
+
+void	ctrl_c(int sig)
+{
+	(void)sig;
+	printf("\n");
+	rl_replace_line("", 0);
+	rl_on_new_line();
+	rl_redisplay();
+}
+
+void	ctrl_signals(void)
+{
+	signal(SIGINT, ctrl_c);
+	signal(SIGQUIT, SIG_IGN);	
 }

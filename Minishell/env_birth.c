@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_env.c                                       :+:      :+:    :+:   */
+/*   env_birth.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmassa-r <mmassa-r@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 15:43:32 by mmassa-r          #+#    #+#             */
-/*   Updated: 2023/09/27 15:43:34 by mmassa-r         ###   ########.fr       */
+/*   Created: 2023/09/28 11:02:53 by lugoncal          #+#    #+#             */
+/*   Updated: 2023/09/28 11:05:53 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_env *ft_new_env(char *v_name, char *v_value)
 
 t_env	*ft_last_env(t_env *env)
 {
-	if (lst)
+	if (env)
 	{
 		while (env->next != NULL)
 			env = env->next;
@@ -70,11 +70,10 @@ void	env_birth(t_data *data, char **env)
 			v_name[len] = '\0';
 			v_value = ft_strdup(ft_strchr(env[i], '=') + 1);
 			new_env = ft_new_env(v_name, v_value);
-			ft_env_to_the_back(&data->env, new_env);\\\\\\
+			ft_env_to_the_back(&data->env, new_env);
 		}
 		free(v_name);
 		free(v_value);
 		i++;
 	}
-
 }
