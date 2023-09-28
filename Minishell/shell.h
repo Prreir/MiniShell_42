@@ -6,7 +6,7 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 11:08:03 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/09/28 11:04:48 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/09/28 11:44:02 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 
 # define INV_ARGS "Minishell: No support for command-line arguments"
 
-# define PROMPT "\033[38;5;29mMi\033[0m\33[38;5;35mni\033[0m\033[38;5;71mSh\033[0m\033[38;5;120mel\033[0m\033[38;5;122ml$ \033[0m"
+# define PROMPT "\033[38;5;20mMi\033[0m\33[38;5;26mni\033[0m\033[38;5;32mSh\033[0m\033[38;5;38mel\033[0m\033[38;5;44ml$ \033[0m"
 
 typedef	struct s_env{
 	char	*v_name;
