@@ -16,7 +16,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 LIBFT = ./Libft/libft.a
 
-SRC = main.c utils.c ctrl.c env_birth.c
+SRC = main.c utils.c ctrl.c env_birth.c exp_creation.c
 
 OBJ = $(SRC:.c=.o)
 

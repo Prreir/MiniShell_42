@@ -16,6 +16,7 @@ void	data_init(t_data *data)
 {
 	data->input = NULL;
 	data->env = NULL;
+	data->exp = NULL;
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -25,7 +26,8 @@ int	main(int argc, char **argv, char **envp)
 	if (argc > 1 && argv)
 		error_msg(NULL, INV_ARGS, -1);
 	data_init(&data);
-	env_birth(&data, envp);
+	env_birth(&data, envp); //CHANGE THE SHIT NAME
+	exp_creation(&data, envp); //append
 	while (1)
 	{
 		ctrl_signals();

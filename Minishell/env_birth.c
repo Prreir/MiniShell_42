@@ -12,15 +12,15 @@
 
 #include "shell.h"
 
-t_env *ft_new_env(char *v_name, char *v_value)
+t_env *ft_new_env(char *venv_name, char *venv_value)
 {
 	t_env *new_env;
 
 	new_env = malloc(sizeof(t_env));
 	if (!new_env)
 		return (0);
-	new_env->v_name = ft_strdup(v_name);
-	new_env->v_value = ft_strdup(v_value);
+	new_env->venv_name = ft_strdup(venv_name);
+	new_env->venv_value = ft_strdup(venv_value);
 	new_env->next = NULL;
 	return (new_env);
 }
@@ -55,8 +55,8 @@ void	env_birth(t_data *data, char **env)
 {
 	size_t len;
 	int i;
-	char *v_name;
-	char *v_value;
+	char *venv_name;
+	char *venv_value;
 	t_env *new_env;
 
 	i = 0;
@@ -65,15 +65,15 @@ void	env_birth(t_data *data, char **env)
 		if (ft_strchr(env[i], '='))
 		{
 			len = ft_strchr(env[i], '=') - env[i];
-			v_name = malloc(len + 1);
-			ft_memcpy(v_name, env[i], len);
-			v_name[len] = '\0';
-			v_value = ft_strdup(ft_strchr(env[i], '=') + 1);
-			new_env = ft_new_env(v_name, v_value);
+			venv_name = malloc(len + 1);
+			ft_memcpy(venv_name, env[i], len);
+			venv_name[len] = '\0';
+			venv_value = ft_strdup(ft_strchr(env[i], '=') + 1);
+			new_env = ft_new_env(venv_name, venv_value);
 			ft_env_to_the_back(&data->env, new_env);
 		}
-		free(v_name);
-		free(v_value);
+		free(venv_name);
+		free(venv_value);
 		i++;
 	}
 }
