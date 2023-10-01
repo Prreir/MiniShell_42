@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   exp_creation.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmassa-r <mmassa-r@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/28 15:22:53 by mmassa-r          #+#    #+#             */
-/*   Updated: 2023/09/28 15:22:55 by mmassa-r         ###   ########.fr       */
+/*   Created: 2023/10/01 10:22:26 by lugoncal          #+#    #+#             */
+/*   Updated: 2023/10/01 10:23:45 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "shell.h"
+
 
 t_exp *ft_new_exp(char *vexp_name, char *vexp_value)
 {
