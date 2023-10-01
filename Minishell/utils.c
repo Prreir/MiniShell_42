@@ -6,26 +6,45 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 10:38:56 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/09/28 09:52:59 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/09/28 15:30:42 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int	valid(t_data *data)
+int	step_next(char *input)
 {
-	if (!ft_strlen(data->input))
+	int	step;
+
+	step = 1;
+	while (input[step])
 	{
-		free(data->input);
-		return (1);
+		if (input[step] == input[0])
+			return (step);
+		step++;
 	}
-	add_history(data->input);
+	return (-1);
+}
+
+int	is_quote(char c)
+{
+	if (c == '\'' || c == '\"')
+		return (1);
 	return (0);
 }
 
-void	boom(t_data *data)
+int	is_special(char c)
 {
-	free(data->input);
+	if (c == '>' || c == '<' || c == '|')
+		return (1);
+	return (0);
+}
+
+int	is_space(char c)
+{
+	if (c == ' ' || c == '\t' || c == '\v')
+		return (1);
+	return (0);
 }
 
 void	error_msg(t_data *data, char *msg, int status)
