@@ -91,11 +91,11 @@ t_exp	*ft_last_exp(t_exp *exp);
 void ft_exp_to_the_back(t_exp **exp, t_exp *new);
 void	exp_creation(t_data *data, char **env);
 
-//env_birth.c
+//env_creation.c
 t_env	*new_env(char *v_name, char *v_value);
 t_env	*last_env(t_env *env);
 void	env_to_the_back(t_env **env, t_env *new);
-void	env_birth(t_data *data, char **env);
+void	env_creation(t_data *data, char **env);
 
 //ctrl.c
 int		ctrl_d (char *input);
@@ -111,5 +111,6 @@ void    error_msg(t_data *data, char *msg, int status);
 
 //main.c
 void	data_init(t_data *data);
+void	wait_for_child_processes(t_data *data);
 
 #endif

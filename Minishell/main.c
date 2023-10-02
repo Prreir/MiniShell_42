@@ -12,12 +12,35 @@
 
 #include "shell.h"
 
+int			exit_status_global;
+
 void	data_init(t_data *data)
 {
 	data->input = NULL;
 	data->env = NULL;
 	data->exp = NULL;
 	data->token = NULL;
+	data->last_pid = 0;
+	data->processes = 0;
+}
+/*function to wait for all the child processes that we create
+on fork for each command*/
+void	wait_for_child_processes(t_data *data)
+{
+	int 	status;
+
+	if (waitpid(state->last_pid, &status, 0) != -1)
+	{
+		data->processes--;
+		if (WIFEXITED(status) == TRUE)/*macro to see if the code of the child proc. exited normally*/
+			exit_status_global = WEXITSTATUS(status);/*macro that obtain the exit status of the child proc.*/
+		data->last_pid = 0;
+	}
+	while (data->processes)
+	{
+		wait(0);
+		data->processes;
+	}
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -27,7 +50,7 @@ int	main(int argc, char **argv, char **envp)
 	if (argc > 1 && argv)
 		error_msg(NULL, INV_ARGS, -1);
 	data_init(&data);
-	env_birth(&data, envp);
+	env_creation(&data, envp);
 	exp_creation(&data, envp);
 	while (1)
 	{
