@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ctrl.c                                             :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 15:25:38 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/03 10:42:33 by lugoncal         ###   ########.fr       */
+/*   Created: 2023/10/03 11:56:20 by lugoncal          #+#    #+#             */
+/*   Updated: 2023/10/03 12:04:02 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shell.h"
+#include	"shell.h"
 
 extern int	exit_status;
 
-int	ctrl_d (char *input)
+char	*get_char(char *input)
 {
-	if (!input)
+	if (*input == '|')
+		return ("|");
+	if (*input == '>')
 	{
-		printf ("exit\n");
-		return (1);
+		if (*(input + 1) == '>')
+			return (">>");
+		return (">");
 	}
+	if (*input == '<')
+	{
+		if (*(input + 1) == '<')
+			return ("<<");
+		return ("<");
+	}
+	return ("");
+}
+
+int	is_redirect(char c)
+{
+	if (c == '<' || c == '>')
+		return (1);
 	return (0);
-}
-
-void	ctrl_c(int sig)
-{
-	(void)sig;
-	exit_status = EXIT_CTRL_C;
-	printf("\n");
-	rl_replace_line("", 0);
-	rl_on_new_line();
-	rl_redisplay();
-}
-
-void	ctrl_signals(void)
-{
-	signal(SIGINT, ctrl_c);
-	signal(SIGQUIT, SIG_IGN);	
 }

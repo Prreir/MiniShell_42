@@ -6,46 +6,66 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:34:44 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/09/28 15:33:12 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/03 12:17:29 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int	tokenlen(char *input)
-{
-	int len;
-	int	step;
+extern int	exit_status;
 
-	len = 0;
-	step = 0;
-	while (input[len] && !(is_space(input[len]) || is_special(input[len])))
+int	valid_last(t_data *data)
+{
+	t_token	*last;
+
+	last = last_token(data->token);
+	if (!last)
+		return (1);
+	
+}
+
+char	*special_token(t_data *data, char *input)
+{
+	if (valid_sequence(data, input))
 	{
-		if(is_quote(input[len]))
-		{
-			step = step_next(input);
-			if (step == -1)
-			{
-				printf("error unclosed quote");
-				return (-1);
-			}
-			len = len + step;
-		}
-		len++;
+		ft_putstr_fd("syntax error near unexpected token ", 2);
+		ft_putendl_fd(get_char(input), 2);
+		exit_status = EXIT_SYNTAX_ERROR;
+		return (NULL);
 	}
-	return (len);
+	if (*input == '|')
+		return (token_create(input, input, PIPE, data));
+	if (*input == '>')
+	{
+		if (*(input + 1) == '>')
+			return (token_create(input, input + 1, APPEND, data));
+		else
+			return (token_create(input, input + 1, OUT, data));
+	}
+	if (*input == '<')
+	{
+		if (*(input + 1) == '<')
+			return (token_create(input, input + 1, HEREDOC, data));
+		else
+			return (token_create(input, input + 1, IN, data));
+	}
+	return (input);
 }
 
 char	*normal_token(t_data *data, char *input)
 {
 	int	len;
-	
-	len = tokenlen(input);
+	t_token	*last;	
+
+	len = token_len(input);
 	if (len == -1)
 		return (NULL);
-	printf("%d\n", len);
-	(void)data;
-	return (input);
+	last = last_token(data->token);
+	if (last && last->type == HEREDOC)
+		return (token_create(input, input + len - 1, DELIMITER, data));
+	if (last && (last->type == IN || last->type == OUT || last->type == APPEND))
+		return (token_create(input, input + len - 1, FILES, data));
+	return (token_create(input, input + len - 1, WORD, data));
 }
 
 int	process(t_data *data, char *input)
@@ -58,7 +78,7 @@ int	process(t_data *data, char *input)
 			break;
 		if (is_special(*input))
 		{
-			//input = special_token(data, input);
+			input = special_token(data, input);
 			if (input == NULL)
 				return (1);
 			continue;
@@ -67,7 +87,7 @@ int	process(t_data *data, char *input)
 		if (input == NULL)
 			return (1);
 	}
-	return (0);
+	return (valid_last(data));
 }
 
 int	input_v(t_data *data)
@@ -80,6 +100,7 @@ int	input_v(t_data *data)
 	add_history(data->input);
 	if (process(data, data->input))
     {
+		exit_status = EXIT_SYNTAX_ERROR;
         boom_input(data);
 		return (1);
     }

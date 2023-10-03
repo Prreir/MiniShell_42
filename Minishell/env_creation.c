@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_birth.c                                        :+:      :+:    :+:   */
+/*   env_creation.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/28 11:02:53 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/09/28 11:54:48 by lugoncal         ###   ########.fr       */
+/*   Created: 2023/10/03 13:11:33 by lugoncal          #+#    #+#             */
+/*   Updated: 2023/10/03 13:11:36 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void env_to_the_back(t_env **env, t_env *new)
 	tail->next = new;
 }
 
-void	env_creation(t_data *data, char **env)
+void	env_birth(t_data *data, char **env)
 {
 	size_t len;
 	int i;

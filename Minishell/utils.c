@@ -6,11 +6,13 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 10:38:56 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/09/28 15:30:42 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/03 10:32:22 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+extern int	exit_status;
 
 int	step_next(char *input)
 {
@@ -47,10 +49,10 @@ int	is_space(char c)
 	return (0);
 }
 
-void	error_msg(t_data *data, char *msg, int status)
+void	error_msg(t_data *data, char *msg)
 {
 	if (data)
 		boom(data);
 	printf("%s\n", msg);
-	exit(status);
+	exit(exit_status);
 }
