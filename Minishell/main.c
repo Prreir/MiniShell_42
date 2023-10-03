@@ -12,7 +12,7 @@
 
 #include "shell.h"
 
-int			exit_status_global;
+int			exit_status;
 
 void	data_init(t_data *data)
 {
@@ -29,17 +29,17 @@ void	wait_for_child_processes(t_data *data)
 {
 	int 	status;
 
-	if (waitpid(state->last_pid, &status, 0) != -1)
+	if (waitpid(data->last_pid, &status, 0) != -1)
 	{
 		data->processes--;
-		if (WIFEXITED(status) == TRUE)/*macro to see if the code of the child proc. exited normally*/
-			exit_status_global = WEXITSTATUS(status);/*macro that obtain the exit status of the child proc.*/
+		if (WIFEXITED(status) != 0)/*macro to see if the code of the child proc. exited normally*/
+			exit_status = WEXITSTATUS(status);/*macro that obtain the exit status of the child proc.*/
 		data->last_pid = 0;
 	}
 	while (data->processes)
 	{
 		wait(0);
-		data->processes;
+		data->processes--;
 	}
 }
 
@@ -60,6 +60,7 @@ int	main(int argc, char **argv, char **envp)
 			break;
 		if (input_v(&data))
 			continue;
+		wait_for_child_processes(&data);
 		boom_input(&data);
 	}
 	boom(&data);

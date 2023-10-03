@@ -71,6 +71,8 @@ typedef	struct s_env{
 
 typedef struct s_data{
 	char	*input;
+	int processes;
+	int last_pid;
 	t_env	*env;
 	t_exp	*exp;
 	t_token	*token;
@@ -86,9 +88,9 @@ void	boom_input(t_data *data);
 void    boom(t_data *data);
 
 //exp_creation.c
-t_exp *ft_new_exp(char *vexp_name, char *vexp_value);
-t_exp	*ft_last_exp(t_exp *exp);
-void ft_exp_to_the_back(t_exp **exp, t_exp *new);
+t_exp *new__exp(char *vexp_name, char *vexp_value);
+t_exp	*last_exp(t_exp *exp);
+void add_exp(t_exp **exp, t_exp *new);
 void	exp_creation(t_data *data, char **env);
 
 //env_creation.c
@@ -96,6 +98,18 @@ t_env	*new_env(char *v_name, char *v_value);
 t_env	*last_env(t_env *env);
 void	env_to_the_back(t_env **env, t_env *new);
 void	env_creation(t_data *data, char **env);
+
+//env.c
+char *get_env(char *name, t_data *data);
+int set_env(char *name, char *new_value, t_data *data);
+t_env *search_env(char *name, t_data *data);
+void print_env(t_data *data);
+
+//exp.c
+char *get_exp(char *name, t_data *data);
+int set_exp(char *name, char *new_value, t_data *data);
+t_exp *search_exp(char *name, t_data *data);
+void print_exp(t_data *data);
 
 //ctrl.c
 int		ctrl_d (char *input);
