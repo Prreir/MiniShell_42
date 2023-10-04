@@ -12,7 +12,7 @@
 
 #include "shell.h"
 
-t_exp	*ft_new_exp(char *vexp_name, char *vexp_value)
+t_exp	*new__exp(char *vexp_name, char *vexp_value)
 {
 	t_exp *new_exp;
 
@@ -25,30 +25,24 @@ t_exp	*ft_new_exp(char *vexp_name, char *vexp_value)
 	return (new_exp);
 }
 
-t_exp	*ft_last_exp(t_exp *exp)
+void add_exp(t_exp **exp, t_exp *new)
 {
-	if (exp)
-	{
-		while (exp->next != NULL)
-			exp = exp->next;
-		return (exp);
-	}
-	return (NULL);
-}
+	t_exp *curr;
 
-void	ft_exp_to_the_back(t_exp **exp, t_exp *new)
-{
-	t_exp *tail;
-
-	if (!new)
-		return ;
-	if (!*exp)
+	if (*exp == NULL || ft_strcmp((*exp)->vexp_name, new->vexp_name) >= 0)
 	{
+		new->next = *exp;
 		*exp = new;
-		return ;
 	}
-	tail = ft_last_exp(*exp);
-	tail->next = new;
+	else
+	{
+		curr = *exp;
+		while (curr->next != NULL &&
+			ft_strcmp(curr->next->vexp_name, new->vexp_name) < 0)
+			curr = curr->next;
+		new->next = curr->next;
+		curr->next = new;
+	}
 }
 
 void	exp_creation(t_data *data, char **env)
@@ -69,8 +63,8 @@ void	exp_creation(t_data *data, char **env)
 			ft_memcpy(vexp_name, env[i], len);
 			vexp_name[len] = '\0';
 			vexp_value = ft_strdup(ft_strchr(env[i], '=') + 1);
-			new_exp = ft_new_exp(vexp_name, vexp_value);
-			ft_exp_to_the_back(&data->exp, new_exp);
+			new_exp = new__exp(vexp_name, vexp_value);
+			add_exp(&data->exp, new_exp);
 		}
 		free(vexp_name);
 		free(vexp_value);

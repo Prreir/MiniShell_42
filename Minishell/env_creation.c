@@ -51,7 +51,7 @@ void env_to_the_back(t_env **env, t_env *new)
 	tail->next = new;
 }
 
-void	env_birth(t_data *data, char **env)
+void	env_creation(t_data *data, char **env)
 {
 	size_t len;
 	int i;
