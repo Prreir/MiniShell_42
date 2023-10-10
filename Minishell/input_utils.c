@@ -6,7 +6,7 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 10:56:22 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/03 11:31:29 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/10 10:38:40 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	token_len(char *input)
 			step = step_next(input);
 			if (step == -1)
 			{
-				printf("error unclosed quote");
+				ft_putendl_fd("error unclosed quote", 2);
 				exit_status = EXIT_SYNTAX_ERROR;
 				return (-1);
 			}

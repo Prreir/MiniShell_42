@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   expand_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 14:00:53 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/10 10:36:42 by lugoncal         ###   ########.fr       */
+/*   Created: 2023/10/10 11:15:43 by lugoncal          #+#    #+#             */
+/*   Updated: 2023/10/10 11:16:18 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "shell.h"
 
-void	ft_putstr_fd(char *s, int fd)
+extern int exit_status;
+
+char	*append_char(char *str, char c)
 {
-	int	i;
+	char *tmp;
 
-	if (s != NULL)
-	{
-		i = 0;
-		while (s[i])
-		{
-			write(fd, &s[i], 1);
-			i++;
-		}
-	}
+	if (!str || !c)
+		return (NULL);
+	tmp = malloc(ft_strlen(str) + 2);
+	ft_memcpy(tmp, str, ft_strlen(str));
+	tmp[ft_strlen(str)] = c;
+	tmp[ft_strlen(str) + 1] = '\0';
+	free(str);
+	return (tmp);
 }

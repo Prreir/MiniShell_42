@@ -6,7 +6,7 @@
 #    By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/19 11:07:58 by lugoncal          #+#    #+#              #
-#    Updated: 2023/10/03 13:12:50 by lugoncal         ###   ########.fr        #
+#    Updated: 2023/10/10 11:16:28 by lugoncal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,9 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 LIBFT = ./Libft/libft.a
 
-SRC = main.c utils.c ctrl.c env_creation.c exp_creation.c boom.c input.c input_utils.c input_utils2.c utils2.c env.c exp.c
+SRC = main.c utils.c ctrl.c env_creation.c exp_creation.c boom.c \
+	input.c input_utils.c input_utils2.c utils2.c env.c exp.c \
+	expand.c expand_utils.c
 
 OBJ = $(SRC:.c=.o)
 

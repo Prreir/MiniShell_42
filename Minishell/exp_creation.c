@@ -6,7 +6,7 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 10:22:26 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/03 09:22:51 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/10 10:13:28 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,30 @@ t_exp	*new__exp(char *vexp_name, char *vexp_value)
 	return (new_exp);
 }
 
-void add_exp(t_exp **exp, t_exp *new)
+t_exp	*last_exp(t_exp *exp)
 {
-	t_exp *curr;
+	if (exp)
+	{
+		while (exp->next != NULL)
+			exp = exp->next;
+		return (exp);
+	}
+	return (NULL);
+}
 
-	if (*exp == NULL || ft_strcmp((*exp)->vexp_name, new->vexp_name) >= 0)
+void	add_exp(t_exp **exp, t_exp *new)
+{
+	t_exp *tail;
+
+	if (!new)
+		return ;
+	if (!*exp)
 	{
-		new->next = *exp;
 		*exp = new;
+		return ;
 	}
-	else
-	{
-		curr = *exp;
-		while (curr->next != NULL &&
-			ft_strcmp(curr->next->vexp_name, new->vexp_name) < 0)
-			curr = curr->next;
-		new->next = curr->next;
-		curr->next = new;
-	}
+	tail = last_exp(*exp);
+	tail->next = new;
 }
 
 void	exp_creation(t_data *data, char **env)

@@ -6,7 +6,7 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:34:44 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/03 12:17:29 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/10 10:44:13 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,19 @@ int	valid_last(t_data *data)
 	last = last_token(data->token);
 	if (!last)
 		return (1);
-	
+	if (ft_strcmp(last->word, "<") == 0 || ft_strcmp(last->word, "<<") == 0 || ft_strcmp(last->word, ">") == 0 || ft_strcmp(last->word, ">>") == 0)
+	{
+		ft_putendl_fd("syntax error near unexpected token `newline'", 2);
+		exit_status = EXIT_SYNTAX_ERROR;
+		return (1);
+	}
+	if (pipe_pedent(data))
+	{
+		ft_putendl_fd("error: pending pipe", 2);
+		exit_status = EXIT_SYNTAX_ERROR;
+		return (1);
+	}
+	return (0);
 }
 
 char	*special_token(t_data *data, char *input)
@@ -104,5 +116,6 @@ int	input_v(t_data *data)
         boom_input(data);
 		return (1);
     }
+	expand(data);
     return (0);
 }

@@ -6,11 +6,11 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:10:19 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/03 13:12:01 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/10 10:10:25 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "shell.h"
 
 extern int exit_status;
 
@@ -59,7 +59,7 @@ int set_exp(char *name, char *new_value, t_data *data)
 	}
 	else
 	{
-		new_exp = new_exp(name, new_value);
+		new_exp = new__exp(name, new_value);
 		add_exp(&data->exp, new_exp);
 		return (0);
 	}

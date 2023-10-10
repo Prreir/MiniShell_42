@@ -6,7 +6,7 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 11:08:03 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/03 13:09:51 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/10 11:17:19 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,14 @@ typedef struct s_data{
 	int		processes;
 }   t_data;
 
+//expand_utils.c
+char	*append_char(char *str, char c);
+
+//expand.c
+int		toogle_quote(char c, char *quote);
+void	remove_quote(t_token *token);
+void	expand(t_data *data);
+
 //env.c
 char *get_env(char *name, t_data *data);
 int set_env(char *name, char *new_value, t_data *data);
@@ -94,6 +102,8 @@ t_exp *search_exp(char *name, t_data *data);
 void print_exp(t_data *data);
 
 //utils2.c
+int		pipe_pedent(t_data *data);
+int		ft_strcmp(char *s1, char *s2);
 char	*get_char(char *input);
 int		is_redirect(char c);
 
@@ -119,7 +129,7 @@ void	boom_input(t_data *data);
 void    boom(t_data *data);
 
 //exp_creation.c
-t_exp	*new_exp(char *vexp_name, char *vexp_value);
+t_exp	*new__exp(char *vexp_name, char *vexp_value);
 t_exp	*last_exp(t_exp *exp);
 void	add_exp(t_exp **exp, t_exp *new);
 void	exp_creation(t_data *data, char **env);
