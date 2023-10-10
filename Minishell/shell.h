@@ -6,7 +6,7 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 11:08:03 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/10 11:17:19 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/10 12:14:04 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,14 @@ typedef struct s_data{
 }   t_data;
 
 //expand_utils.c
+char	*append_var(char *word, char *var, t_data *data);
+char	*find_var(char *word);
+int		can_expand(const char *word, char *quote);
+void    til_expand(t_token *token, t_data *data);
 char	*append_char(char *str, char c);
 
 //expand.c
-int		toogle_quote(char c, char *quote);
+int		toogle_quote(const char c, char *quote);
 void	remove_quote(t_token *token);
 void	expand(t_data *data);
 

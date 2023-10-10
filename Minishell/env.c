@@ -6,7 +6,7 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:10:03 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/10 09:45:43 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/10 12:11:09 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 extern int	exit_status;
 
-// void print_env(t_data *data)
-// {
-// 	t_env *print;
+void print_env(t_data *data)
+{
+	t_env *print;
 
-// 	print = data->env;
-// 	while (lst)
-// 	{
-// 		printf("%s=%s\n", print->v_name, print->v_value );
-// 		print = print->next;
-// 	}
-// 	exit_status = 0;
-// }
+	print = data->env;
+	while (print)
+	{
+		printf("%s=%s\n", print->v_name, print->v_value );
+		print = print->next;
+	}
+	exit_status = 0;
+}
 
 t_env *search_env(char *name, t_data *data)
 {
