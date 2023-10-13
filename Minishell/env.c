@@ -6,13 +6,40 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:10:03 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/10 12:11:09 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/13 10:07:10 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
 extern int	exit_status;
+
+char	**array_env(t_data *data)
+{
+	int	num;
+	int	i;
+	t_env	*cur;
+	char	**env;
+
+	num = 0;
+	cur = data->env;
+	while (cur != NULL)
+	{
+		num++;
+		cur = cur->next;
+	}
+	env = ft_calloc(sizeof(char **), num + 1);
+	cur = data->env;
+	i = 0;
+	while (cur != NULL)
+	{
+		env[i] = join_three(cur->v_name, "=", cur->v_value);
+		cur = cur->next;
+		i++;
+	}
+	env[i] = NULL;
+	return (env);
+}
 
 void print_env(t_data *data)
 {

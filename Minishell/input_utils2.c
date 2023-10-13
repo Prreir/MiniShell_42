@@ -6,13 +6,31 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:37:32 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/03 12:06:32 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:36:02 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
 extern int	exit_status;
+
+void	clean_token(t_token **token, void(*del)(void *))
+{
+	t_token	*tmp;
+	t_token	*next_node;
+
+	if (!token || !del)
+		return ;
+	tmp = *token;
+	while (tmp != NULL)
+	{
+		next_node = tmp->next;
+		del(tmp->word);
+		free(tmp);
+		tmp = next_node;
+	}
+	*token = NULL;
+}
 
 int valid_sequence(t_data *data, char *input)
 {

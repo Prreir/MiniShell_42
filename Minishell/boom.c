@@ -6,11 +6,26 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:18:20 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/09/28 13:29:20 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/13 10:23:56 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+void	cmd_free(char **ptr)
+{
+    int i;
+
+    i = 0;
+    while (ptr[i])
+        i++;
+    while (i > 0)
+    {
+        free(ptr[i - 1]);
+        i--;
+    }
+    free(ptr);
+}
 
 void    boom_env(t_env *env)
 {

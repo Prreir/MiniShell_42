@@ -6,13 +6,19 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:56:20 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/10 11:16:12 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/12 11:30:37 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"shell.h"
 
 extern int	exit_status;
+
+void	print_error(char *msg, int error)
+{
+	exit_status = error;
+	printf("%s\n", msg);
+}
 
 int	pipe_pedent(t_data *data)
 {

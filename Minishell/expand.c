@@ -6,7 +6,7 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 10:43:49 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/10 12:16:29 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/12 11:45:55 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	expand(t_data *data)
 	token = data->token;
 	while (token)
 	{
-		if (token->type == DELIMITER)
+		if (token->type == HEREDOC_DELIMITER)
 			remove_quote(token);
 		else
 		{

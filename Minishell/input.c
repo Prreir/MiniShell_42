@@ -6,7 +6,7 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:34:44 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/10 10:44:13 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/12 11:46:30 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,16 @@ char	*special_token(t_data *data, char *input)
 	if (*input == '>')
 	{
 		if (*(input + 1) == '>')
-			return (token_create(input, input + 1, APPEND, data));
+			return (token_create(input, input + 1, REDIR_APPEND, data));
 		else
-			return (token_create(input, input + 1, OUT, data));
+			return (token_create(input, input + 1, REDIR_OUT, data));
 	}
 	if (*input == '<')
 	{
 		if (*(input + 1) == '<')
 			return (token_create(input, input + 1, HEREDOC, data));
 		else
-			return (token_create(input, input + 1, IN, data));
+			return (token_create(input, input + 1, REDIR_IN, data));
 	}
 	return (input);
 }
@@ -74,9 +74,9 @@ char	*normal_token(t_data *data, char *input)
 		return (NULL);
 	last = last_token(data->token);
 	if (last && last->type == HEREDOC)
-		return (token_create(input, input + len - 1, DELIMITER, data));
-	if (last && (last->type == IN || last->type == OUT || last->type == APPEND))
-		return (token_create(input, input + len - 1, FILES, data));
+		return (token_create(input, input + len - 1, HEREDOC_DELIMITER, data));
+	if (last && (last->type == REDIR_IN || last->type == REDIR_OUT || last->type == REDIR_APPEND))
+		return (token_create(input, input + len - 1, REDIR_FILES, data));
 	return (token_create(input, input + len - 1, WORD, data));
 }
 
@@ -117,5 +117,6 @@ int	input_v(t_data *data)
 		return (1);
     }
 	expand(data);
+	parse_execute(data);
     return (0);
 }
