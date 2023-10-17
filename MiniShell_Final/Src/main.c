@@ -6,7 +6,7 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 11:07:52 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/13 16:22:06 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/17 09:40:52 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	main(int argc, char **argv, char **envp)
 		data.input = readline(BLUE);
 		if (ctrl_d(data.input))
 			break;
-		if (input_v(&data))
+		if (valid_input(&data))
 			continue;
 	// 	wait_for_child_processes(&data);
 		boom_cmd(&data);

@@ -6,7 +6,7 @@
 #    By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/13 13:28:09 by lugoncal          #+#    #+#              #
-#    Updated: 2023/10/13 16:21:03 by lugoncal         ###   ########.fr        #
+#    Updated: 2023/10/17 13:24:12 by lugoncal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,25 +47,62 @@ GLOBAL_DIR	:=	Global/
 ENV_DIR	:=	Environment/
 EXP_DIR	:=	Export/
 SIGNAL_DIR	:=	Signals/
+INPUT_DIR	:=	Input/
+PARSE_DIR	:=	Parse/
+EXECUTE_DIR	:=	Execute/
+COMMANDS_DIR	:=	Commands/
 
 GLOBAL	:=	utils.c \
 			boom.c \
+			utils_2.c \
+			utils_3.c
 
-ENV	:=	env.c
+ENV	:=	env.c \
+		env_2.c
 
-EXP	:=	exp.c
+EXP	:=	exp.c \
+		exp_2.c
 
 SIGNAL	:=	signals.c
+
+INPUT	:=	input.c \
+			input_utils.c \
+			tokens.c \
+			expand.c \
+			expand_utils.c \
+
+PARSE	:=	parse.c \
+			parse_utils.c \
+			cmd.c \
+			redirect.c \
+			heredoc.c \
+			heredoc_signals.c
+
+
+EXECUTE	:=	execute.c \
+				path.c
+
+COMMANDS	:=	commands.c \
+				cmd_echo.c \
+				
 
 GLOBAL_SRC	:=	$(addprefix $(GLOBAL_DIR), $(GLOBAL))
 ENV_SRC	:=	$(addprefix $(ENV_DIR), $(ENV))
 EXP_SRC	:=	$(addprefix $(EXP_DIR), $(EXP))
 SIGNAL_SRC	:=	$(addprefix $(SIGNAL_DIR), $(SIGNAL))
+INPUT_SRC	:=	$(addprefix $(INPUT_DIR), $(INPUT))
+PARSE_SRC	:=	$(addprefix $(PARSE_DIR), $(PARSE))
+EXECUTE_SRC	:=	$(addprefix $(EXECUTE_DIR), $(EXECUTE))
+COMMANDS_SRC	:=	$(addprefix $(COMMANDS_DIR), $(COMMANDS))
 
 SRC	:=	$(GLOBAL_SRC) \
 		$(ENV_SRC) \
 		$(EXP_SRC) \
 		$(SIGNAL_SRC) \
+		$(INPUT_SRC) \
+		$(PARSE_SRC) \
+		$(EXECUTE_SRC) \
+		$(COMMANDS_SRC) \
 		main.c
 
 SOURCES	:=	$(addprefix $(SRC_DIR), $(SRC))
@@ -94,6 +131,10 @@ $(OBJ_DIR):
 	@mkdir -p $@/Environment
 	@mkdir -p $@/Export
 	@mkdir -p $@/Signals
+	@mkdir -p $@/Input
+	@mkdir -p $@/Parse
+	@mkdir -p $@/Execute
+	@mkdir -p $@/Commands
 
 clean:
 	@make -sC $(LIB_PATH) clean
