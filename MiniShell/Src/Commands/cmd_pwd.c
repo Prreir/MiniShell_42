@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   cmd_pwd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lugoncal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 14:00:53 by lugoncal          #+#    #+#             */
-/*   Updated: 2022/11/09 14:00:54 by lugoncal         ###   ########.fr       */
+/*   Created: 2023/10/24 09:45:14 by lugoncal          #+#    #+#             */
+/*   Updated: 2023/10/24 10:32:24 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "shell.h"
 
-void	ft_putstr_fd(char *s, int fd)
+extern int	g_exit_status;
+
+void	pwd_cmd(void)
 {
-	int	i;
+	char	pwd[256];
 
-	if (s != NULL)
-	{
-		i = 0;
-		while (s[i])
-		{
-			ft_putchar_fd(s[i], fd);
-			i++;
-		}
-	}
+	getcwd(pwd, sizeof(pwd));
+	printf("%s\n", pwd);
+	g_exit_status = 0;
 }

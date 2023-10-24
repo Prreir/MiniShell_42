@@ -5,32 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 10:38:56 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/09/28 15:30:42 by lugoncal         ###   ########.fr       */
+/*   Created: 2023/10/13 14:09:47 by lugoncal          #+#    #+#             */
+/*   Updated: 2023/10/17 14:05:45 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int	step_next(char *input)
-{
-	int	step;
+extern int	g_exit_status;
 
-	step = 1;
-	while (input[step])
+char	*get_char(char *input)
+{
+	if (*input == '|')
+		return ("|");
+	if (*input == '>')
 	{
-		if (input[step] == input[0])
-			return (step);
-		step++;
+		if (*(input + 1) == '>')
+			return (">>");
+		return (">");
 	}
-	return (-1);
-}
-
-int	is_quote(char c)
-{
-	if (c == '\'' || c == '\"')
-		return (1);
-	return (0);
+	if (*input == '<')
+	{
+		if (*(input + 1) == '<')
+			return ("<<");
+		return ("<");
+	}
+	return ("");
 }
 
 int	is_special(char c)
@@ -47,10 +47,18 @@ int	is_space(char c)
 	return (0);
 }
 
-void	error_msg(t_data *data, char *msg, int status)
+int	ft_strcmp(char *s1, char *s2)
 {
-	if (data)
-		boom(data);
+	int	i;
+
+	i = 0;
+	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+		i++;
+	return (s1[i] - s2[i]);
+}
+
+void	print_error(char *msg, int error)
+{
+	g_exit_status = error;
 	printf("%s\n", msg);
-	exit(status);
 }

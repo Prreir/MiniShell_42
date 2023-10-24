@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ctrl.c                                             :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 15:25:38 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/09/28 09:05:18 by lugoncal         ###   ########.fr       */
+/*   Created: 2022/11/09 14:00:53 by lugoncal          #+#    #+#             */
+/*   Updated: 2023/10/10 10:36:42 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shell.h"
+#include "libft.h"
 
-int	ctrl_d (char *input)
+void	ft_putstr_fd(char *s, int fd)
 {
-	if (!input)
+	int	i;
+
+	if (s != NULL)
 	{
-		printf ("exit\n");
-		return (1);
+		i = 0;
+		while (s[i])
+		{
+			write(fd, &s[i], 1);
+			i++;
+		}
 	}
-	return (0);
-}
-
-void	ctrl_c(int sig)
-{
-	(void)sig;
-	printf("\n");
-	rl_replace_line("", 0);
-	rl_on_new_line();
-	rl_redisplay();
-}
-
-void	ctrl_signals(void)
-{
-	signal(SIGINT, ctrl_c);
-	signal(SIGQUIT, SIG_IGN);	
 }

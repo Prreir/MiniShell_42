@@ -1,20 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_birth.c                                        :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/28 11:02:53 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/09/28 11:54:48 by lugoncal         ###   ########.fr       */
+/*   Created: 2023/10/13 14:56:02 by lugoncal          #+#    #+#             */
+/*   Updated: 2023/10/17 14:28:33 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-t_env *new_env(char *v_name, char *v_value)
+void	boom_env(t_env *env)
 {
-	t_env *new_envp;
+	t_env	*tmp;
+
+	while (env)
+	{
+		tmp = env;
+		env = env->next;
+		if (!tmp)
+			break ;
+		free(tmp->v_name);
+		free(tmp->v_value);
+		free(tmp);
+	}
+}
+
+t_env	*new_env(char *v_name, char *v_value)
+{
+	t_env	*new_envp;
 
 	new_envp = malloc(sizeof(t_env));
 	if (!new_envp)
@@ -36,9 +52,9 @@ t_env	*last_env(t_env *env)
 	return (NULL);
 }
 
-void env_to_the_back(t_env **env, t_env *new)
+void	env_to_the_back(t_env **env, t_env *new)
 {
-	t_env *tail;
+	t_env	*tail;
 
 	if (!new)
 		return ;
@@ -51,13 +67,13 @@ void env_to_the_back(t_env **env, t_env *new)
 	tail->next = new;
 }
 
-void	env_birth(t_data *data, char **env)
+void	env_create(t_data *data, char **env)
 {
-	size_t len;
-	int i;
-	char *v_name;
-	char *v_value;
-	t_env *new_envp;
+	size_t	len;
+	int		i;
+	char	*v_name;
+	char	*v_value;
+	t_env	*new_envp;
 
 	i = 0;
 	while (env[i])
