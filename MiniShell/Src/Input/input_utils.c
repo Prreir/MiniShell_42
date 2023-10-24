@@ -6,7 +6,7 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:57:55 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/17 14:16:16 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/24 11:50:44 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ int	valid_sequence(t_data *data, char *input)
 	if (last && is_special(*(last->word)))
 	{
 		if (is_redirect(*last->word) && (is_redirect(*input) || *input == '|'))
-			return (1);
-		if (is_redirect(*last->word) && is_redirect(*input))
 			return (1);
 		if (*input == '|' && *last->word == '|')
 			return (1);
