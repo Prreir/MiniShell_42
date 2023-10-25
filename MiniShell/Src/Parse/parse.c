@@ -6,7 +6,7 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:07:21 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/17 14:29:44 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:58:38 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	parse(t_token *token, int *old_in, t_data *data)
 			parse_command(token, cur, old_in, data);
 			token = cur->next;
 			parse(token, old_in, data);
+			break ;
 		}
 		cur = cur->next;
 	}

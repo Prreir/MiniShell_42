@@ -6,7 +6,7 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:32:47 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/24 10:55:29 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:57:12 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	exec_cmd(char **cmd, int *save, int *old_in, t_data *data)
 	if (!cmd[0] || !valid_command(cmd, save, data))
 		return ;
 	pid = fork();
-	signals_ctrl();
+	signals_exec();
 	data->last_pid = pid;
 	data->processes++;
 	if (pid == 0)

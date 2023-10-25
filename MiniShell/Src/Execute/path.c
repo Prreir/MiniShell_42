@@ -6,7 +6,7 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:40:26 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/17 14:23:48 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/25 12:05:26 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ char	*get_path(char *cmd, char *path)
 int	executable(char *cmd)
 {
 	if (!access(cmd, F_OK))
-		return (0);
-	return (1);
+		return (1);
+	return (0);
 }
 
 int	path_defined(char **path_v, t_data *data)

@@ -6,7 +6,7 @@
 #    By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/13 13:28:09 by lugoncal          #+#    #+#              #
-#    Updated: 2023/10/24 10:23:10 by lugoncal         ###   ########.fr        #
+#    Updated: 2023/10/25 11:34:28 by lugoncal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,23 +15,16 @@ _BOLD		=	\e[1m
 _UNDER		=	\e[4m
 _REV		=	\e[7m
 
-
-_GREY		=	\e[1;30m
-_RED		=	\e[1;31m
-_GREEN		=	\e[1;32m
-_YELLOW		=	\e[1;33m
-_BLUE		=	\e[1;34m
-_PURPLE		=	\e[1;35m
-_CYAN		=	\e[1;36m
-_WHITE		=	\e[1;37m
-
+_RED		=	\e[02;31m
+_GREEN		=	\e[00;32m
+_ORANGE		=	\e[02;91m
 
 _GONE		=	\e[2K\r
 
 NAME	:=	minishell
 CC	:=	cc
 CFLAGS	:=	-Wall -Werror -Wextra -g
-DEPS	:=	-lreadline #-lXext -lX11 -lm
+DEPS	:=	-lreadline -lXext -lX11 -lm
 
 INCLUDE	=	-I ./Include/\
 			-I ./Libft/
@@ -64,7 +57,8 @@ ENV	:=	env.c \
 EXP	:=	exp.c \
 		exp_2.c
 
-SIGNAL	:=	signals.c
+SIGNAL	:=	signals.c \
+			signals_exec.c
 
 INPUT	:=	input.c \
 			input_utils.c \
@@ -119,10 +113,10 @@ OBJ :=	$(addprefix $(OBJ_DIR), $(OBJS))
 all:	$(LIB) $(NAME)
 
 $(LIB):
-	@printf "$(_GONE)$(_YELLOW) Making LIBFT... $(_END)\n"
+	@printf "$(_GONE)$(_ORANGE) Making LIBFT... $(_END)\n"
 	@make -sC $(LIB_PATH)
-	@printf "$(_GONE)$(_GREEN) LIBFT Created. $(_END)\n"
-	@printf "$(_GONE)$(_BLUE) ============================================ $(_END)\n"
+	@printf "$(_GONE)$(_ORANGE) LIBFT Created. $(_END)\n"
+	@printf "$(_GONE)$(_ORANGE) ============================================ $(_END)\n"
 
 $(NAME):	$(OBJ)
 	@printf "\033[2K\r$(_GREEN) All files compiled into '$(OBJ_DIR)'. $(_END)\n"

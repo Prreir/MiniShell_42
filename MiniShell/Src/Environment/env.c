@@ -6,7 +6,7 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 14:56:02 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/17 14:28:33 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/25 10:50:43 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,7 @@ void	boom_env(t_env *env)
 	{
 		tmp = env;
 		env = env->next;
-		if (!tmp)
-			break ;
-		free(tmp->v_name);
-		free(tmp->v_value);
-		free(tmp);
+		boom_env2(tmp);
 	}
 }
 

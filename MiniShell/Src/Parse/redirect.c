@@ -6,13 +6,29 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:18:31 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/17 14:30:53 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/25 12:04:13 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
 extern int	g_exit_status;
+
+int	redirect_in(char *file, int flags)
+{
+	int	fd_file;
+
+	fd_file = open(file, flags);
+	if (fd_file == -1)
+	{
+		print_error(strerror(errno), 1);
+		g_exit_status = 1;
+		return (1);
+	}
+	dup2(fd_file, IN);
+	close(fd_file);
+	return (0);
+}
 
 int	redirect_out(char *file, int flags)
 {
@@ -38,7 +54,7 @@ int	make_redirect(char *word, char *file, int *save, t_data *data)
 	if (!ft_strcmp(word, ">"))
 		file_error = redirect_out(file, O_WRONLY | O_CREAT | O_TRUNC);
 	else if (!ft_strcmp(word, "<"))
-		file_error = redirect_out(file, O_RDONLY);
+		file_error = redirect_in(file, O_RDONLY);
 	else if (!ft_strcmp(word, ">>"))
 		file_error = redirect_out(file, O_WRONLY | O_CREAT | O_APPEND);
 	else if (!ft_strcmp(word, "<<"))

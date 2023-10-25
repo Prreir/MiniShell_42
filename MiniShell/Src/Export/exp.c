@@ -6,11 +6,20 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 15:51:06 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/17 14:20:06 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/25 10:52:02 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+void	boom_exp2(t_exp *tmp)
+{
+	if (!tmp)
+		return ;
+	free(tmp->vexp_name);
+	free(tmp->vexp_value);
+	free(tmp);
+}
 
 void	boom_exp(t_exp *exp)
 {
@@ -20,11 +29,7 @@ void	boom_exp(t_exp *exp)
 	{
 		tmp = exp;
 		exp = exp->next;
-		if (!tmp)
-			break ;
-		free(tmp->vexp_name);
-		free(tmp->vexp_value);
-		free(tmp);
+		boom_exp2(tmp);
 	}
 }
 

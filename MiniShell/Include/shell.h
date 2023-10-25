@@ -6,7 +6,7 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 13:21:59 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/24 10:45:02 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/25 12:04:33 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,11 @@
 
 # define INV_ARGS "Minishell: No support for command-line arguments"
 
-# define BLUE "\033[38;5;20mMi\033[0m\33[38;5;26mni\033[0m\033[38;5;32mSh\
-\033[0m\033[38;5;38mel\033[0m\033[38;5;44ml$ \033[0m"
+# define BLUE "MiniShell> " 
 
 # define EXIT_CTRL_C 130
 # define EXIT_SYNTAX_ERROR 2
-# define CODE_CMD_NOT_FOUND 127
+# define EXIT_CMD_NOT_FOUND 127
 
 # define IN 0
 # define OUT 1
@@ -95,7 +94,13 @@ typedef struct s_data {
 /*                                 Prototypes                                 */
 /* -------------------------------------------------------------------------- */
 
+//signals_exec.c
+void	exec_ctrl_c(int signal);
+void	exec_ctrl_bslash(int signal);
+void	signals_exec(void);
+
 //utils_4.c
+void		boom_env2(t_env *tmp);
 int			is_all_digits(char *str);
 int			is_number(char *str);
 long long	ft_atol(const char *str);
@@ -147,6 +152,7 @@ int			tmp_create(void);
 int			heredoc(char *file, int *save, t_data *data);
 
 //redirect.c
+int			redirect_in(char *file, int flags);
 int			redirect_out(char *file, int flags);
 int			make_redirect(char *word, char *file, int *save, t_data *data);
 int			check_redirect(t_token *token, t_token *cur, int *save, \
@@ -245,6 +251,7 @@ void		boom_token(t_token **token, void (*del)(void *));
 void		boom(t_data *data);
 
 //exp.c
+void		boom_exp2(t_exp *tmp);
 void		boom_exp(t_exp *exp);
 t_exp		*new__exp(char *vexp_name, char *vexp_value);
 void		add_exp(t_exp **exp, t_exp *new);

@@ -6,7 +6,7 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 09:55:54 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/24 10:34:05 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/25 10:51:21 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	unset_envvariables(t_data *data, char *key)
 	if (temp != NULL && temp->v_name == key)
 	{
 		data->env = temp->next;
-		boom_env(temp);
+		boom_env2(temp);
 		return ;
 	}
 	while (temp != NULL && ft_strcmp(temp->v_name, key) != 0)
@@ -35,7 +35,7 @@ void	unset_envvariables(t_data *data, char *key)
 	if (temp == NULL)
 		return ;
 	prev->next = temp->next;
-	boom_env(temp);
+	boom_env2(temp);
 }
 
 void	unset_expvariables(t_data *data, char *key)
@@ -48,7 +48,7 @@ void	unset_expvariables(t_data *data, char *key)
 	if (temp != NULL && temp->vexp_name == key)
 	{
 		data->exp = temp->next;
-		boom_exp(temp);
+		boom_exp2(temp);
 		return ;
 	}
 	while (temp != NULL && ft_strcmp(temp->vexp_name, key) != 0)
@@ -59,7 +59,7 @@ void	unset_expvariables(t_data *data, char *key)
 	if (temp == NULL)
 		return ;
 	prev->next = temp->next;
-	boom_exp(temp);
+	boom_exp2(temp);
 }
 
 int	is_valid_key_unset(char *key, char *type)

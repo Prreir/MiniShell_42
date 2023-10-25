@@ -6,11 +6,20 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 10:22:05 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/24 10:31:24 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/25 10:51:52 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+void	boom_env2(t_env *tmp)
+{
+	if (!tmp)
+		return ;
+	free(tmp->v_name);
+	free(tmp->v_value);
+	free(tmp);
+}
 
 int	is_all_digits(char *str)
 {
