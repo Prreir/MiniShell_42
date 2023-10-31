@@ -6,7 +6,7 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 13:21:59 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/31 10:45:38 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/31 11:56:07 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,9 @@ typedef struct s_data {
 /* -------------------------------------------------------------------------- */
 
 //signals_exec.c
-void	exec_ctrl_c(int signal);
-void	exec_ctrl_bslash(int signal);
-void	signals_exec(void);
+void		exec_ctrl_c(int signal);
+void		exec_ctrl_bslash(int signal);
+void		signals_exec(void);
 
 //utils_4.c
 void		boom_env2(t_env *tmp);
