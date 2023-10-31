@@ -6,7 +6,7 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:00:15 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/17 14:17:30 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/31 10:11:13 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	token_len(char *input)
 	{
 		if (is_quote(input[len]))
 		{
-			step = step_next(input);
+			step = step_next(input + len);
 			if (step == -1)
 			{
 				ft_putendl_fd("error unclosed quote", 2);
@@ -74,7 +74,6 @@ char	*token_create(char *input, char *end, t_type type, t_data *data)
 	t_token	*create;
 	char	*word;
 
-	(void)data;
 	if (*end)
 	{
 		word = ft_substr(input, 0, end - input + 1);

@@ -6,7 +6,7 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:40:07 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/25 11:09:46 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/25 13:59:10 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*normal_token(t_data *data, char *input)
 	if (last && last->type == HEREDOC)
 		return (token_create(input, input + len - 1, HEREDOC_DELIMITER, data));
 	if (last && (last->type == REDIR_IN || last->type == REDIR_OUT || \
-				last->type == REDIR_APPEND))
+		last->type == REDIR_APPEND))
 		return (token_create(input, input + len - 1, REDIR_FILES, data));
 	return (token_create(input, input + len - 1, WORD, data));
 }

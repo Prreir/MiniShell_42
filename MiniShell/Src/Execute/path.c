@@ -6,7 +6,7 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:40:26 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/25 12:05:26 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/31 11:16:34 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,5 @@ int	path_defined(char **path_v, t_data *data)
 		return (0);
 	}
 	*path_v = path->v_value;
-	return (0);
+	return (1);
 }

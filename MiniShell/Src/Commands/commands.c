@@ -6,7 +6,7 @@
 /*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:34:41 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/24 10:33:23 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/25 13:51:35 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	exec_commands(char **cmd, t_data *data)
 {
-	(void)data;
 	if (ft_strcmp(cmd[0], "echo") == 0)
 		echo_cmd(cmd + 1);
 	else if (ft_strcmp(cmd[0], "cd") == 0)
@@ -56,8 +55,6 @@ int	commands(char **cmd)
 	if (ft_strcmp(cmd[0], "env") == 0)
 		return (1);
 	if (ft_strcmp(cmd[0], "exit") == 0)
-	{
 		return (1);
-	}
 	return (0);
 }

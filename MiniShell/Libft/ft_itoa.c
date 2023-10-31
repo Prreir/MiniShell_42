@@ -3,55 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lugoncal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 13:51:48 by lugoncal          #+#    #+#             */
-/*   Updated: 2022/11/09 13:51:50 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:12:03 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_cont(int n)
+static int	ft_size(int n)
 {
-	size_t	cont;
+	int	size;
 
-	cont = 0;
+	size = 0;
 	if (n <= 0)
-		cont++;
+		size++;
 	while (n != 0)
 	{
 		n = n / 10;
-		cont++;
+		size++;
 	}
-	return (cont);
+	return (size);
 }
 
 char	*ft_itoa(int n)
 {
-	char	*dest;
-	int		i;
-	size_t	cont;
+	char	*str;
+	long	nbr;
+	size_t	size;
 
-	i = 1;
-	cont = ft_cont(n);
-	dest = malloc(sizeof(char) * (cont + 1));
-	if (!dest)
+	size = ft_size(n);
+	nbr = n;
+	if (nbr < 0)
+		nbr *= -1;
+	str = (char *)malloc(size + 1);
+	if (!str)
 		return (0);
-	dest[cont] = '\0';
-	cont--;
-	if (n < 0)
+	*(str + size--) = '\0';
+	while (nbr > 0)
 	{
-		dest[0] = '-';
-		i = -1;
+		*(str + size--) = nbr % 10 + '0';
+		nbr /= 10;
 	}
-	else if (n == 0)
-		dest[cont] = '0';
-	while (n != 0)
-	{
-		dest[cont] = (((n % 10) * i) + 48);
-		n = n / 10;
-		cont--;
-	}
-	return (dest);
+	if (size == 0 && str[1] == '\0')
+		*(str + size) = '0';
+	else if (size == 0 && str[1] != '\0')
+		*(str + size) = '-';
+	return (str);
 }
