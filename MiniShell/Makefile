@@ -3,23 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+         #
+#    By: lugoncal <lugoncal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/13 13:28:09 by lugoncal          #+#    #+#              #
-#    Updated: 2023/10/25 11:34:28 by lugoncal         ###   ########.fr        #
+#    Updated: 2023/11/03 12:02:51 by lugoncal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-_END		=	\e[0m
-_BOLD		=	\e[1m
-_UNDER		=	\e[4m
-_REV		=	\e[7m
-
-_RED		=	\e[02;31m
-_GREEN		=	\e[00;32m
-_ORANGE		=	\e[02;91m
-
-_GONE		=	\e[2K\r
+_YELLOW		=	\e[33m
+_GREEN		=	\e[32m
+_ORANGE		=	\e[31m
 
 NAME	:=	minishell
 CC	:=	cc
@@ -113,15 +106,21 @@ OBJ :=	$(addprefix $(OBJ_DIR), $(OBJS))
 all:	$(LIB) $(NAME)
 
 $(LIB):
-	@printf "$(_GONE)$(_ORANGE) Making LIBFT... $(_END)\n"
+	@echo "$(_GREEN) ███╗   ███╗██╗███╗   ██╗██╗███████╗██╗  ██╗███████╗██╗     ██╗     ";
+	@echo "$(_GREEN) ████╗ ████║██║████╗  ██║██║██╔════╝██║  ██║██╔════╝██║     ██║     ";
+	@echo "$(_GREEN) ██╔████╔██║██║██╔██╗ ██║██║███████╗███████║█████╗  ██║     ██║     ";
+	@echo "$(_GREEN) ██║╚██╔╝██║██║██║╚██╗██║██║╚════██║██╔══██║██╔══╝  ██║     ██║     ";
+	@echo "$(_GREEN) ██║ ╚═╝ ██║██║██║ ╚████║██║███████║██║  ██║███████╗███████╗███████╗";
+	@echo "$(_GREEN) ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝";
+	@echo "$(_GREEN) =============  Project made by: lugoncal && mmassa-r  =============";
 	@make -sC $(LIB_PATH)
-	@printf "$(_GONE)$(_ORANGE) LIBFT Created. $(_END)\n"
-	@printf "$(_GONE)$(_ORANGE) ============================================ $(_END)\n"
+	@echo "$(_YELLOW)  Making LIBFT...";
+	@echo "$(_YELLOW)  LIBFT Created.";
 
 $(NAME):	$(OBJ)
-	@printf "\033[2K\r$(_GREEN) All files compiled into '$(OBJ_DIR)'. $(_END)\n"
 	@$(CC) $(CFLAGS) -o $@ $(OBJ) $(LIB) $(INCLUDE) $(DEPS)
-	@printf "\033[2K\r$(_GREEN) Executable '$(NAME)' created. $(_END)\n"
+	@echo "$(_YELLOW)  All files compiled into '$(OBJ_DIR)'.";
+	@echo "$(_YELLOW)  Executable '$(NAME)' created.";
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
@@ -140,12 +139,12 @@ $(OBJ_DIR):
 clean:
 	@make -sC $(LIB_PATH) clean
 	@rm -rf $(OBJ_DIR)
-	@printf "\033[2K\r$(_RED) '"$(OBJ_DIR)"' has been deleted. $(_END)\n"
+	@echo "$(_ORANGE)  '"$(OBJ_DIR)"' has been deleted.";
 
 fclean: clean
 	@make -sC $(LIB_PATH) fclean
 	@rm -f $(NAME)
-	@printf "\033[2K\r$(_RED) '"$(NAME)"' has been deleted. $(_END)\n"
+	@echo "$(_ORANGE)  '"$(NAME)"' has been deleted.";
 
 re: fclean all
 
