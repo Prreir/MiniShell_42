@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lugoncal <lugoncal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:40:26 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/31 11:16:34 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/11/06 11:08:18 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	path_defined(char **path_v, t_data *data)
 	path = search_env("PATH", data);
 	if (!path)
 	{
-		print_error("no such file or directory.", 127);
+		print_error("no such file or directory.", 127, 0);
 		return (0);
 	}
 	*path_v = path->v_value;

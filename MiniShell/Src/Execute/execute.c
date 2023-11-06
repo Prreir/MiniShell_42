@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lugoncal <lugoncal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:32:47 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/31 11:00:02 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/11/06 13:06:35 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	valid_command(char **cmd, int *save, t_data *data)
 		if (!name)
 		{
 			restore_save(save);
-			print_error("minishell: command not found.", 127);
+			print_error("command not found", 127, cmd);
 			return (0);
 		}
 		free(cmd[0]);

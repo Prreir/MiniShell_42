@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lugoncal <lugoncal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 11:07:52 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/17 14:07:31 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/11/06 13:02:09 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,10 @@ int	main(int argc, char **argv, char **envp)
 
 	(void)envp;
 	if (argc > 1 && argv)
-		print_error(INV_ARGS, EXIT_FAILURE);
+	{
+		print_error(INV_ARGS, EXIT_FAILURE, 0);
+		return (EXIT_FAILURE);
+	}
 	init(&data);
 	env_create(&data, envp);
 	exp_create(&data, envp);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_cd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lugoncal <lugoncal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 09:24:41 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/24 10:32:44 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/11/06 13:07:48 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ void	cd_cmd(t_data *data, char **cmd)
 {
 	char	*path;
 
-	path = cmd[0];
-	if (cmd[0] && cmd[1])
+	path = cmd[1];
+	if (cmd[1] && cmd[2])
 	{
-		print_error("too many arguments", 1);
+		print_error("too many arguments", 1, cmd);
 		g_exit_status = 1;
 		return ;
 	}

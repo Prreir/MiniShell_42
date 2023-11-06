@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lugoncal <lugoncal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 13:21:59 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/31 11:56:07 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:11:14 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -269,7 +269,7 @@ char		*get_char(char *input);
 int			is_special(char c);
 int			is_space(char c);
 int			ft_strcmp(char *s1, char *s2);
-void		print_error(char *msg, int error);
+void		print_error(char *msg, int error, char **line);
 
 //main.c
 void		init(t_data *data);

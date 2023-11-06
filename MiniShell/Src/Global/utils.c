@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lugoncal <lugoncal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 14:09:47 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/17 14:05:45 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/11/06 13:08:43 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,18 @@ int	ft_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
-void	print_error(char *msg, int error)
+void	print_error(char *msg, int error, char **line)
 {
 	g_exit_status = error;
-	printf("%s\n", msg);
+	if (line == 0)
+		printf("%s\n", msg);
+	else if (ft_strcmp(line[0], "exit") == 0)
+	{
+		if (is_number(line[1]))
+			printf("%s: %s\n", line[0], msg);
+		else
+			printf("%s: %s: %s\n", line[0], line[1], msg);
+	}
+	else if (ft_strcmp(line[0], "exit") != 0)
+		printf("%s: %s\n", line[0], msg);
 }

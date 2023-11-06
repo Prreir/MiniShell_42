@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lugoncal <lugoncal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:18:31 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/25 12:04:13 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/11/06 11:07:32 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	redirect_in(char *file, int flags)
 	fd_file = open(file, flags);
 	if (fd_file == -1)
 	{
-		print_error(strerror(errno), 1);
+		print_error(strerror(errno), 1, 0);
 		g_exit_status = 1;
 		return (1);
 	}
@@ -37,7 +37,7 @@ int	redirect_out(char *file, int flags)
 	fd = open(file, flags, 0644);
 	if (fd == -1)
 	{
-		print_error(strerror(errno), 1);
+		print_error(strerror(errno), 1, 0);
 		g_exit_status = 1;
 		return (1);
 	}

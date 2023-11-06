@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lugoncal <lugoncal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:22:59 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/17 14:05:45 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/11/06 11:07:56 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	heredoc_input(int tmp, char *file, t_data *data)
 		input = readline("> ");
 		if (!input)
 		{
-			print_error("warning: here-document delimited by end-of-file", 0);
+			print_error("warning: here-document delimited by end-of-file", 0, 0);
 			close(tmp);
 			exit(EXIT_SUCCESS);
 		}
@@ -66,7 +66,7 @@ int	tmp_create(void)
 
 	fd = open(HEREDOC_FILE, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fd == -1)
-		print_error(strerror(errno), 1);
+		print_error(strerror(errno), 1, 0);
 	return (fd);
 }
 
