@@ -6,7 +6,7 @@
 /*   By: lugoncal <lugoncal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:22:59 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/11/06 13:14:40 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/11/06 13:48:08 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	heredoc_input(int tmp, char *file, t_data *data)
 		input = readline("> ");
 		if (!input)
 		{
-			print_error("warning: here-document delimited by end-of-file"\
-			, 0, 0);
+			print_error("warning: here-document at line 1 delimited by \
+end-of-file", 0, 0);
 			close(tmp);
 			exit(EXIT_SUCCESS);
 		}
