@@ -6,7 +6,7 @@
 /*   By: lugoncal <lugoncal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 10:00:12 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/11/06 12:06:43 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/11/06 14:13:13 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@ void	handle_exit_with_two_args(char **cmd, t_data *data)
 	if (!is_number(cmd[1]))
 	{
 		print_error("numeric argument required", 2, cmd);
+		boom(data);
+		exit_code = (char)ft_atol(cmd[1]);
+		cmd_free(cmd);
+		exit(exit_code);
+	}
+	else if (is_number(cmd[1]))
+	{
 		boom(data);
 		exit_code = (char)ft_atol(cmd[1]);
 		cmd_free(cmd);

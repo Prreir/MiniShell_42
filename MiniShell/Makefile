@@ -6,7 +6,7 @@
 #    By: lugoncal <lugoncal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/13 13:28:09 by lugoncal          #+#    #+#              #
-#    Updated: 2023/11/03 12:02:51 by lugoncal         ###   ########.fr        #
+#    Updated: 2023/11/06 13:59:16 by lugoncal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -148,4 +148,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+valgrind: re
+	valgrind --leak-check=full --show-leak-kinds=all --suppressions=readline_supression ./minishell
+
+.PHONY: all clean fclean re valgrind

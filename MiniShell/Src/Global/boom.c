@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   boom.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lugoncal <lugoncal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 16:03:59 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/24 10:43:57 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/11/06 14:10:15 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ void	boom_token(t_token **token, void (*del)(void *))
 
 void	boom(t_data *data)
 {
-	if (data->env)
-		boom_env(data->env);
 	if (data->token)
 		boom_token(&(data->token), free);
+	if (data->env)
+		boom_env(data->env);
 	if (data->exp)
 		boom_exp(data->exp);
 	rl_clear_history();

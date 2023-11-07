@@ -6,7 +6,7 @@
 /*   By: lugoncal <lugoncal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:16:18 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/11/06 11:06:57 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/11/06 14:46:26 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	pipe_create(t_token *cur, int *old_in)
 	int	new_pipe[2];
 
 	dup2(*old_in, STDIN_FILENO);
+	if (*old_in != STDIN_FILENO)
+		close(*old_in);
 	if (!cur)
 		return ;
 	pipe(new_pipe);
