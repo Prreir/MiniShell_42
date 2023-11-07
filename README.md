@@ -12,6 +12,6 @@
 
 <h2 align="left">🔗 Usefull Links</h2>
 
-- [Docs MiniLibx](https://harm-smits.github.io/42docs/libs/minilibx/introduction.html)
+- [Docs](https://quirky-aftershave-16f.notion.site/eb791bf3fd1d4fb2b4b8874d26ec8479?v=ce979a4b4b2f4998b9bc4967eba957d8)
 
 Made by Luís Pereira (Prreir) | lugoncal@student.42porto.com
