@@ -6,7 +6,7 @@
 /*   By: lugoncal <lugoncal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 10:00:12 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/11/06 14:13:13 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/11/07 10:29:17 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	handle_exit_with_two_args(char **cmd, t_data *data)
 		cmd_free(cmd);
 		exit(exit_code);
 	}
-	else if (is_number(cmd[1]))
+	else if (is_number(cmd[1]) && !cmd[2])
 	{
 		boom(data);
 		exit_code = (char)ft_atol(cmd[1]);
