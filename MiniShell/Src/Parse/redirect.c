@@ -6,7 +6,7 @@
 /*   By: lugoncal <lugoncal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:18:31 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/11/06 11:07:32 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/11/07 13:54:29 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ extern int	g_exit_status;
 
 int	redirect_in(char *file, int flags)
 {
-	int	fd_file;
+	int	fd;
 
-	fd_file = open(file, flags);
-	if (fd_file == -1)
+	fd = open(file, flags);
+	if (fd == -1)
 	{
 		print_error(strerror(errno), 1, 0);
 		g_exit_status = 1;
 		return (1);
 	}
-	dup2(fd_file, IN);
-	close(fd_file);
+	dup2(fd, IN);
+	close(fd);
 	return (0);
 }
 

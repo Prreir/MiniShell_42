@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_signals.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lugoncal <lugoncal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:27:29 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/25 12:13:29 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/11/07 13:55:43 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

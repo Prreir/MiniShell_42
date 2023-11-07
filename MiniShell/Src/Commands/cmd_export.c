@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_export.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lugoncal <lugoncal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 09:50:16 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/24 10:33:43 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/11/07 13:19:20 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	is_valid_key(char *key, char *cmd, char *type)
 	i = 0;
 	if (!(ft_isalpha(cmd[i]) || cmd[i] == '_'))
 	{
-		printf("minishell: %s: `%s': not a valid identifier\n", type, cmd);
+		printf("%s: `%s': not a valid identifier\n", type, cmd);
 		return (0);
 	}
 	i++;
@@ -35,7 +35,7 @@ int	is_valid_key(char *key, char *cmd, char *type)
 	{
 		if (!(ft_isalnum(key[i]) || key[i] == '_'))
 		{
-			printf("minishell: %s: `%s': not a valid identifier\n", type, key);
+			printf("%s: `%s': not a valid identifier\n", type, key);
 			return (0);
 		}
 		i++;
