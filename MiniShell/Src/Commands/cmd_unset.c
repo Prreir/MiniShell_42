@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_unset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lugoncal <lugoncal@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lugoncal <lugoncal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 09:55:54 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/10/25 10:51:21 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/11/14 10:26:20 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	is_valid_key_unset(char *key, char *type)
 	i = 0;
 	if (!(ft_isalpha(key[i]) || key[i] == '_'))
 	{
-		printf("minishell: %s: `%s': not a valid identifier\n", type, key);
+		printf("%s: `%s': not a valid identifier\n", type, key);
 		return (0);
 	}
 	i++;
@@ -77,7 +77,7 @@ int	is_valid_key_unset(char *key, char *type)
 	{
 		if (!(ft_isalnum(key[i]) || key[i] == '_') || key[i] == '=' )
 		{
-			printf("minishell: %s: `%s': not a valid identifier\n", type, key);
+			printf("%s: `%s': not a valid identifier\n", type, key);
 			return (0);
 		}
 		i++;

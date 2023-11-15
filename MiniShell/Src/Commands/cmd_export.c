@@ -6,7 +6,7 @@
 /*   By: lugoncal <lugoncal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 09:50:16 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/11/07 13:19:20 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/11/14 10:52:27 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ void	only_export(t_data *data, char *key)
 		set_exp(key, NULL, data);
 }
 
-int	is_valid_key(char *key, char *cmd, char *type)
+int	is_valid_key(char *key, char *type)
 {
 	int	i;
 
 	i = 0;
-	if (!(ft_isalpha(cmd[i]) || cmd[i] == '_'))
+	if (!(ft_isalpha(key[i]) || key[i] == '_'))
 	{
-		printf("%s: `%s': not a valid identifier\n", type, cmd);
+		printf("%s: `%s': not a valid identifier\n", type, key);
 		return (0);
 	}
 	i++;
@@ -53,7 +53,7 @@ void	export_single(char *cmd, t_data *data)
 	while (cmd[len] != '\0' && cmd[len] != '=')
 		len++;
 	key = ft_substr(cmd, 0, len);
-	if (!is_valid_key(key, cmd, "export"))
+	if (!is_valid_key(key, "export"))
 	{
 		free(key);
 		return ;

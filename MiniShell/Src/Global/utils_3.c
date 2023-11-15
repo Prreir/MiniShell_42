@@ -6,7 +6,7 @@
 /*   By: lugoncal <lugoncal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 11:45:45 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/11/06 10:45:51 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/11/14 10:26:02 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	close_last_input(int old_in)
 
 void	exec_error(char **env, char **cmd, t_data *data)
 {
-	printf("minishell: command not found\n");
+	printf("command not found\n");
 	cmd_free(env);
 	cmd_free(cmd);
 	boom(data);

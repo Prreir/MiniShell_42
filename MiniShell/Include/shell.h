@@ -6,7 +6,7 @@
 /*   By: lugoncal <lugoncal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 13:21:59 by lugoncal          #+#    #+#             */
-/*   Updated: 2023/11/06 12:11:14 by lugoncal         ###   ########.fr       */
+/*   Updated: 2023/11/14 10:52:17 by lugoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 /*                                   Defines                                  */
 /* -------------------------------------------------------------------------- */
 
-# define INV_ARGS "Minishell: No support for command-line arguments"
+# define INV_ARGS "No support for command-line arguments"
 
 # define BLUE "MiniShell> " 
 
@@ -117,7 +117,7 @@ void		unset_cmd(t_data *data, char **cmd);
 
 //cmd_export.c
 void		only_export(t_data *data, char *key);
-int			is_valid_key(char *key, char *cmd, char *type);
+int			is_valid_key(char *key, char *type);
 void		export_single(char *cmd, t_data *data);
 void		export_cmd(t_data *data, char **cmd);
 
